@@ -48,7 +48,11 @@ function invocarMetodo(objeto, metodo) {
    // Esta propiedad contiene una función en su interior. Debes invocarla/ejecutarla.
    // [NOTA]: no necesitar retornar nada.
    // Tu código:
-   objeto[metodo];
+   for (var prop in objeto) {
+      if ("'" + prop + "'" === metodo) {
+            objeto.metodo;
+      }
+   };
 }
 
 function multiplicarNumeroDesconocidoPorCinco(objetoMisterioso) {
@@ -150,11 +154,8 @@ function agregarMetodoCalculoDescuento(objetoProducto) {
    // PorcentajeDeDescuento ---> 0.2
    // Precio final ---> 8
    // Tu código:
-   var valorPrecioFinal = objetoProducto[calcularPrecioDescuento] = function () {
-      var precioTotal = objetoProducto.precio - (objetoProducto.precio * objetoProducto.porcentajeDeDescuento);
-      return precioTotal;
-   };
-   return valorPrecioFinal;
+   objetoProducto.calcularPrecioDescuento = () => { return objetoProducto.precio - (objetoProducto.precio * objetoProducto.porcentajeDeDescuento) };
+   return objetoProducto;
 }
 
 /*⚠️ NO MODIFIQUES NADA DEBAJO DE ESTO ⚠️*/
