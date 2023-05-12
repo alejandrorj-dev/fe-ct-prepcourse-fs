@@ -6,7 +6,7 @@ function mayuscula(nombre) {
    // [Ejemplo]: "mario" ----> "Mario".
    // Tu código:
    var arrNombre = nombre.split("");
-   String.upperCase(arrNombre[0]);
+   arrNombre[0] = arrNombre[0].toUpperCase();
    return arrNombre.join("");
 }
 
@@ -35,14 +35,14 @@ function sumarArray(arrayOfNumbers, cb) {
    // Este resultado debes pasárselo como argumento al callback recibido.
    // [NOTA]: no debes reotrnar nada.
    // Tu código:
-   var sumarArreglo = function (arrNumbers) {
+   var sumarArreglo = function (arrNumbers, cb) {
       var suma = 0;
       for (var i = 0; i < arrNumbers.length; i++) {
          suma = suma + arrNumbers[i];
       }
       cb(suma);
    };
-   sumarArreglo(arrayOfNumbers);
+   sumarArreglo(arrayOfNumbers, cb);
 }
 
 function forEach(array, cb) {
@@ -50,12 +50,12 @@ function forEach(array, cb) {
    // Debes iterar sobre el arreglo, y por cada elemento ejecutar el callback.
    // Debes pasarle el elemento como argumento al callback.
    // Tu código:
-   var ejecutarCallbackPorElemento = function (arr) {
+   var ejecutarCallbackPorElemento = function (arr, cb) {
       for (var i = 0; i < arr.length; i++) {
           cb(arr[i]);
       }
    };
-   ejecutarCallbackPorElemento(array);
+   ejecutarCallbackPorElemento(array, cb);
 }
 
 function map(array, cb) {
@@ -63,13 +63,34 @@ function map(array, cb) {
    // Tiene que guardar el resultado devuelto por el callback en cada elemento dentro de un nuevo arreglo.
    // Retorna el nuevo arreglo.
    // Tu código:
-   
+   var iterarArreglo = function (arr, cb) {
+      var nuevoArreglo = [];
+
+      for (var i = 0; i < arr.length; i++) {
+         nuevoArreglo.push(cb(arr[i]));
+      }
+
+      return nuevoArreglo;
+   }
+
+   var resultado = iterarArreglo(array, cb);
+   return resultado;
 }
 
 function filter(arrayOfStrings) {
    // Debes identificar todos los elementos el arreglo que comiencen con la letra "a".
    // Luego retorna un nuevo arreglo con estos elementos.
    // Tu código:
+   
+      var nuevoArr = [];
+
+      for (var i = 0; i < arrayOfStrings.length; i++) {
+         if (arrayOfStrings[i].startsWith("a") == true) {
+            nuevoArr.push(arrayOfStrings[i]);
+         }
+      }
+
+      return nuevoArr;
 }
 
 /*⚠️ NO MODIFIQUES NADA DEBAJO DE ESTO ⚠️*/
